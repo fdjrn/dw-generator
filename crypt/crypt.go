@@ -9,11 +9,6 @@ import (
 	"strings"
 )
 
-const (
-	TransTopUp   = "Top-Up"
-	TransPayment = "Payment"
-)
-
 func GenerateSecretKey() (string, error) {
 	key := make([]byte, 16)
 	_, err := rand.Read(key)

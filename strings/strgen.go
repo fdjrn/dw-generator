@@ -2,13 +2,17 @@ package strings
 
 import (
 	"fmt"
-	"generator/crypt"
 	"math/rand"
 	"strconv"
 	"time"
 )
 
 var charset = []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+
+const (
+	TransTopUp   = "Top-Up"
+	TransPayment = "Payment"
+)
 
 func GetUnixTime() string {
 	tUnixMicro := int64(time.Nanosecond) * time.Now().UnixNano() / int64(time.Microsecond)
@@ -30,9 +34,9 @@ func GenerateReceiptNumber(transType string, id string) string {
 	var r string
 
 	switch transType {
-	case crypt.TransTopUp:
+	case TransTopUp:
 		r = fmt.Sprintf("1000%s%s", tUnix, id)
-	case crypt.TransPayment:
+	case TransPayment:
 		r = fmt.Sprintf("2000%s%s", tUnix, id)
 	}
 
